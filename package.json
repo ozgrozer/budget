@@ -1,11 +1,11 @@
 {
   "name": "budget",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"npm:dev:local\" \"npm:start\" -c \"green,blue\"",
+    "dev": "concurrently \"npm:dev:local\" \"npm:parcel\" -c \"green,blue\"",
     "dev:local": "LOCATION=local nodemon --ignore dist/ ./src/backend/server.js",
-    "start": "parcel ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --port 1201",
+    "parcel": "parcel ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --port 1201",
+    "start": "LOCATION=server node ./src/backend/server.js",
     "build": "parcel build ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --no-source-maps",
     "icomoon": "node ./src/scripts/icomoon.js"
   },

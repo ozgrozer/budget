@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const app = express()
-const port = 1200
+const port = process.env.PORT || 1200
 
 app.set('trust proxy', 1)
 app.set('view engine', 'pug')
