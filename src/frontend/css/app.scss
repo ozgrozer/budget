@@ -1,4 +1,9 @@
-@import './component/layout';
-@import './component/transactions';
-@import './component/create';
-@import './component/statistics';
+@import './utilities/variables';
+@import './utilities/reset';
+
+@import './components/layout';
+@import './components/transactions';
+@import './components/create';
+@import './components/statistics';
+
+@import './../font/icomoon/icomoon.css';
