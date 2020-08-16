@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { MainContext } from '~/src/frontend/js/context/MainContext'
 
 /* const types = {
   1: 'Income',
@@ -45,8 +47,10 @@ const allTransactions = {
 }
 
 const Transactions = () => {
+  const { setState } = useContext(MainContext)
+
   const editTransaction = () => {
-    console.log('editTransaction')
+    setState({ selectedPage: 'create' })
   }
 
   return (
