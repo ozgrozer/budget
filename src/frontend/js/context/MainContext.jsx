@@ -6,7 +6,7 @@ const MainProvider = props => {
   const [state, setState] = useState({
     selectedPage: 'create',
     selectedType: 'expense',
-    transactions: {}
+    transactions: window.defaults.transactions || {}
   })
 
   const _setState = newState => {

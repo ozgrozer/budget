@@ -6,7 +6,7 @@ import { MainContext } from '~/src/frontend/js/context/MainContext'
 
 const Create = () => {
   const { state, setState } = useContext(MainContext)
-  const { selectedType } = state
+  const { selectedType, transactions } = state
 
   const changeType = selectedType => {
     setState({ selectedType })
@@ -16,6 +16,21 @@ const Create = () => {
   const onSubmit = res => {
     if (res.isFormValid) {
       setFormIsSubmitting(true)
+
+      setTimeout(() => {
+        const { price, category } = res.items
+        const type = res.items.type === 'expense'
+          ? 2
+          : 1
+        transactions['16 August'].unshift({
+          type,
+          price,
+          category,
+          date: '1597589648'
+        })
+        setState({ transactions })
+        setFormIsSubmitting(false)
+      }, 1000)
     }
   }
 
@@ -40,6 +55,7 @@ const Create = () => {
               >
                 Expense
               </button>
+
               <button
                 type='button'
                 className={incomeClassName}
@@ -49,6 +65,12 @@ const Create = () => {
                 Income
               </button>
             </div>
+
+            <Input
+              name='type'
+              type='hidden'
+              value={selectedType}
+            />
           </div>
 
           <div className='formGroup'>
@@ -61,7 +83,7 @@ const Create = () => {
           </div>
 
           <div className='formGroup'>
-            <Select className='select'>
+            <Select className='select' name='category'>
               <option value=''>Category</option>
               {Object.keys(categories).map((categoryKey, key) => {
                 const category = categories[categoryKey]
