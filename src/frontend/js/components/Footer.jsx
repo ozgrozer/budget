@@ -6,7 +6,7 @@ const Footer = () => {
   const { state, setState } = useContext(MainContext)
   const { selectedPage } = state
 
-  console.log('glitch test 1')
+  console.log('glitch test 2')
 
   const changePage = selectedPage => {
     setState({ selectedPage })
