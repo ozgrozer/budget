@@ -14,19 +14,19 @@ const Footer = () => {
     <footer>
       <div
         onClick={() => changePage('transactions')}
-        className={'button' + (selectedPage === 'transactions' ? ' active' : '')}
+        className={'footerButton' + (selectedPage === 'transactions' ? ' active' : '')}
       >
         <i className='icon icon-format_list_bulleted' />
       </div>
       <div
         onClick={() => changePage('create')}
-        className={'button' + (selectedPage === 'create' ? ' active' : '')}
+        className={'footerButton' + (selectedPage === 'create' ? ' active' : '')}
       >
         <i className='icon icon-add_circle' />
       </div>
       <div
         onClick={() => changePage('statistics')}
-        className={'button' + (selectedPage === 'statistics' ? ' active' : '')}
+        className={'footerButton' + (selectedPage === 'statistics' ? ' active' : '')}
       >
         <i className='icon icon-bar_chart' />
       </div>

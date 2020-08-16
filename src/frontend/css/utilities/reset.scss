@@ -7,10 +7,24 @@
 
 body {
   margin: 0;
-  font-size: 18px;
   user-select: none;
   touch-callout: none;
-  font-family: 'Open Sans';
+  font-size: $fontSize;
+  font-family: $fontFamily;
+}
+
+body, input, textarea, button, select {
+  color: $gray7;
+  font-size: $fontSize;
+  font-family: $fontFamily;
+}
+
+a, button {
+  text-decoration: none !important;
+}
+
+a {
+  color: $gray7;
 }
 
 html, body, #root {
@@ -25,5 +39,5 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  tap-highlight-color: rgba(0, 0, 0, 0);
+  appearance: none;
 }
