@@ -20,17 +20,17 @@ const categories = {
 }
 
 const allTransactions = {
-  '08-16-2020': [
+  '16 August': [
     { type: 1, category: 1, price: 100, date: '1597589648' },
     { type: 2, category: 2, price: 15.42, date: '1597589648' },
     { type: 2, category: 3, price: 25.42, date: '1597589648' }
   ],
-  '08-15-2020': [
+  '15 August': [
     { type: 2, category: 4, price: 32.54, date: '1597589648' },
     { type: 2, category: 5, price: 85.23, date: '1597589648' },
     { type: 2, category: 6, price: 20.00, date: '1597589648' }
   ],
-  '08-14-2020': [
+  '14 August': [
     { type: 2, category: 2, price: 20.00, date: '1597589648' },
     { type: 2, category: 3, price: 30.00, date: '1597589648' },
     { type: 2, category: 4, price: 40.00, date: '1597589648' },
