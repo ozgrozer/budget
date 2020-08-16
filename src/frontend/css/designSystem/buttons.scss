@@ -101,6 +101,24 @@
       background-color: darken($gray4, $activeDarkRatio);
     }
   }
+  &.gray5 {
+    background-color: $gray5;
+    &:hover {
+      background-color: darken($gray5, $hoverDarkRatio);
+    }
+    &:active {
+      background-color: darken($gray5, $activeDarkRatio);
+    }
+  }
+  &.gray6 {
+    background-color: $gray6;
+    &:hover {
+      background-color: darken($gray6, $hoverDarkRatio);
+    }
+    &:active {
+      background-color: darken($gray6, $activeDarkRatio);
+    }
+  }
   &.white {
     color: $gray7;
     background-color: $white;

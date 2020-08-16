@@ -27,6 +27,10 @@ a {
   color: $gray7;
 }
 
+fieldset {
+  border: none;
+}
+
 html, body, #root {
   height: 100%;
 }

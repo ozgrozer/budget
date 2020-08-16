@@ -1,25 +1,12 @@
 import React, { useContext } from 'react'
 
+import categories from '~/src/frontend/js/components/categories'
 import { MainContext } from '~/src/frontend/js/context/MainContext'
 
 /* const types = {
   1: 'Income',
   2: 'Expense'
 } */
-
-const categories = {
-  1: 'Income',
-  2: 'Rent',
-  3: 'Electricity Bill',
-  4: 'Water Bill',
-  5: 'Phone Bill',
-  6: 'Internet Bill',
-  7: 'Garanti Loan',
-  8: 'Fibabanka Loan',
-  9: 'Restaurant',
-  10: 'Cafe',
-  11: 'Groceries'
-}
 
 const allTransactions = {
   '16 August': [
