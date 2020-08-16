@@ -1,0 +1,26 @@
+$headerHeight: 80px;
+$footerHeight: 80px;
+
+body {
+  margin: 0;
+  font-family: 'Open Sans';
+}
+
+html, body, #root, #app {
+  height: 100%;
+}
+
+header {
+  height: $headerHeight;
+  background-color: #ddd;
+}
+
+main {
+  background-color: #fff;
+  height: calc(100% - #{$headerHeight} - #{$footerHeight});
+}
+
+footer {
+  height: $footerHeight;
+  background-color: #ddd;
+}

@@ -1,0 +1,40 @@
+{
+  "name": "budget",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm:dev:local\" \"npm:start\" -c \"green,blue\"",
+    "dev:local": "LOCATION=local nodemon --ignore dist/ ./src/backend/server.js",
+    "start": "parcel ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --port 1201",
+    "build": "parcel build ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --no-source-maps",
+    "icomoon": "node ./src/scripts/icomoon.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.0",
+    "axios": "^0.19.2",
+    "babel-core": "^6.26.3",
+    "babel-plugin-root-import": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^5.2.0",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.16",
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "1.11.0",
+    "pug": "^3.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rfv": "^0.0.36",
+    "sass": "^1.26.5",
+    "standard": "^14.3.4"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
+}
