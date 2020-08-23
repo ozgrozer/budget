@@ -6,9 +6,9 @@ A simple budgeting app for mobile devices
 
 ## Deploying on Heroku
 
-1. Create a MongoDB Atlas Cluster
+1. Create a [MongoDB Atlas Cluster](https://cloud.mongodb.com/)
 2. Click "Deploy to Heroku" button above and create your Heroku app
-3. Create config variables (can be found in ./.env.example file) in your app settings on Heroku
+3. Create config variables (can be found in [./.env.example](.env.example) file) in your app settings on Heroku
 4. Restart your dyno and you're ready to go
 
 ## Preview
