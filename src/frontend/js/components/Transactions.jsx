@@ -8,9 +8,31 @@ import { MainContext } from '~/src/frontend/js/context/MainContext'
   2: 'Expense'
 } */
 
+const dailyTransactions_ = transactions => {
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  const dailyTransactions = {}
+  for (const key in transactions) {
+    const item = transactions[key]
+
+    const getFullDate = new Date(item.createdAt * 1000)
+    const getDate = getFullDate.getDate()
+    const getMonth = monthNames[getFullDate.getMonth()]
+    const getDay = dayNames[getFullDate.getDay()]
+    const readableDate = `${getDay}, ${getMonth} ${getDate}`
+    if (!Object.prototype.hasOwnProperty.call(dailyTransactions, readableDate)) {
+      dailyTransactions[readableDate] = []
+    }
+    dailyTransactions[readableDate].push(item)
+  }
+
+  return dailyTransactions
+}
+
 const Transactions = () => {
   const { state, setState } = useContext(MainContext)
-  const allTransactions = state.transactions
+  const dailyTransactions = dailyTransactions_(state.transactions)
 
   const editTransaction = () => {
     setState({ selectedPage: 'create' })
@@ -18,9 +40,9 @@ const Transactions = () => {
 
   return (
     <main id='transactions'>
-      {Object.keys(allTransactions).map((day, key1) => {
-        const transactions = allTransactions[day]
-        const balance = '227.23'
+      {Object.keys(dailyTransactions).map((day, key1) => {
+        const transactions = dailyTransactions[day]
+        const balance = '?'
 
         return (
           <div
