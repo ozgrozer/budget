@@ -3,6 +3,10 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 1200
 
+require('dotenv').config()
+
+const { PING } = process.env
+
 app.set('trust proxy', 1)
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, '..', 'frontend', 'html'))
@@ -41,6 +45,7 @@ const fakeTransactions = {
 app.get('*', (req, res) => {
   res.render('app', {
     defaults: {
+      PING,
       transactions: fakeTransactions
     }
   })
