@@ -17,6 +17,7 @@ const limiter = rateLimit({
   }
 })
 
-router.get('*', [limiter], require('./siteRoutes/all'))
+router.get('/', [limiter], require('./siteRoutes/app'))
+router.post('/create-transaction', [limiter], require('./siteRoutes/transactions/createTransaction'))
 
 module.exports = router

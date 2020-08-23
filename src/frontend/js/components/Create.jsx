@@ -16,22 +16,13 @@ const Create = () => {
   const onSubmit = res => {
     if (res.isFormValid) {
       setFormIsSubmitting(true)
-
-      setTimeout(() => {
-        const { price, category } = res.items
-        const type = res.items.type === 'expense'
-          ? 2
-          : 1
-        transactions['16 August'].unshift({
-          type,
-          price,
-          category,
-          date: '1597589648'
-        })
-        setState({ transactions })
-        setFormIsSubmitting(false)
-      }, 1000)
     }
+  }
+  const postSubmit = res => {
+    const countTransactions = Object.keys(transactions).length
+    transactions[countTransactions] = res.data.data
+    setState({ transactions })
+    setFormIsSubmitting(false)
   }
 
   const expenseClassName = selectedType === 'expense'
@@ -43,7 +34,11 @@ const Create = () => {
 
   return (
     <main id='create'>
-      <Form onSubmit={onSubmit}>
+      <Form
+        onSubmit={onSubmit}
+        postSubmit={postSubmit}
+        postOptions={{ method: 'post', url: '/create-transaction' }}
+      >
         <fieldset disabled={formIsSubmitting}>
           <div className='formGroup'>
             <div className='buttonGroup'>
@@ -67,7 +62,7 @@ const Create = () => {
             <Input
               name='type'
               type='hidden'
-              value={selectedType}
+              value={selectedType === 'expense' ? '2' : '1'}
             />
           </div>
 
