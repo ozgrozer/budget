@@ -18,11 +18,16 @@ A simple budgeting app for mobile devices
 ## Todos
 
 - [x] User interface
-- [ ] Create transactions
-- [ ] Read transactions
+- [x] Create transactions
+- [x] Read transactions
 - [ ] Update transactions
 - [ ] Delete transactions
-- [ ] Statistics page
+- [ ] Create categories
+- [ ] Read categories
+- [ ] Update categories
+- [ ] Delete categories
+- [ ] Add settings page
+- [ ] Add statistics page
 
 ## Contribution
 
