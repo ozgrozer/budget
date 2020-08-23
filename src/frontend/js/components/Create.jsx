@@ -51,7 +51,6 @@ const Create = () => {
                 type='button'
                 className={expenseClassName}
                 onClick={() => changeType('expense')}
-                onTouchStart={() => changeType('expense')}
               >
                 Expense
               </button>
@@ -60,7 +59,6 @@ const Create = () => {
                 type='button'
                 className={incomeClassName}
                 onClick={() => changeType('income')}
-                onTouchStart={() => changeType('income')}
               >
                 Income
               </button>
