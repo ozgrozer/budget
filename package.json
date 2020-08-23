@@ -3,11 +3,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npm:dev:local\" \"npm:parcel\" -c \"green,blue\"",
-    "dev:local": "LOCATION=local nodemon --ignore dist/ ./src/backend/server.js",
-    "parcel": "parcel ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --port 1201",
+    "dev:local": "LOCATION=local nodemon --ignore ./dist/ ./src/backend/server.js",
+    "parcel": "parcel ./src/frontend/js/App.jsx --out-dir ./dist/ --public-url / --port 1201",
     "start": "LOCATION=server node ./src/backend/server.js",
     "prestart": "npm run build",
-    "build": "parcel build ./src/frontend/js/App.jsx --out-dir ./dist --public-url / --no-source-maps",
+    "build": "parcel build ./src/frontend/js/App.jsx --out-dir ./dist/ --public-url / --no-source-maps",
     "icomoon": "node ./src/scripts/icomoon.js"
   },
   "dependencies": {
