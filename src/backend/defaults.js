@@ -1,10 +1,9 @@
-const { DB_USER, DB_PASSWORD, DB_SUBDOMAIN, DB_NAME, SESSION_SECRET, PORT, LOCATION } = process.env
+const { DB_USER, DB_PASSWORD, DB_SUBDOMAIN, DB_NAME, PORT, LOCATION } = process.env
 
 const defaults = {
   site: {
     port: PORT || 1200,
-    name: 'Budget',
-    sessionSecret: SESSION_SECRET
+    name: 'Budget'
   },
   rateLimit: {
     max: 1000,
