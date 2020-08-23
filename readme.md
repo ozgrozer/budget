@@ -9,3 +9,7 @@ A simple budgeting app for mobile devices
 2. Click "Deploy to Heroku" button and create your Heroku app.
 3. Create config variables (can be found in ./.env.example file) in your app settings on Heroku.
 4. Restart your dyno and you're ready to go.
+
+## License
+
+[MIT](license)
