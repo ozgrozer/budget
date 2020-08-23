@@ -103,7 +103,7 @@ const Create = () => {
 
           <div className='formGroup'>
             <button className='button blue block createButton'>
-              Create 1
+              Create
             </button>
           </div>
         </fieldset>
