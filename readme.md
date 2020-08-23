@@ -10,6 +10,19 @@ A simple budgeting app for mobile devices
 3. Create config variables (can be found in ./.env.example file) in your app settings on Heroku.
 4. Restart your dyno and you're ready to go.
 
+## Todo
+
+- [x] User Interface
+- [ ] Create transactions
+- [ ] Read transactions
+- [ ] Update transactions
+- [ ] Delete transactions
+- [ ] Statistics page
+
+## Contribution
+
+Feel free to contribute. Open a new [issue](https://github.com/ozgrozer/budget/issues), or make a [pull request](https://github.com/ozgrozer/budget/pulls).
+
 ## License
 
 [MIT](license)
