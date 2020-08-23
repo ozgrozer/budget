@@ -4,7 +4,7 @@ const MainContext = createContext()
 
 const MainProvider = props => {
   const [state, setState] = useState({
-    selectedPage: 'create',
+    selectedPage: 'transactions',
     selectedType: 'expense',
     transactions: window.defaults.transactions || {}
   })
