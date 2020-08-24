@@ -27,7 +27,7 @@ A simple budgeting app for mobile devices
 - [ ] Update categories
 - [ ] Delete categories
 - [ ] Add settings page
-- [ ] Add statistics page
+- [x] Add statistics page
 
 ## Contribution
 

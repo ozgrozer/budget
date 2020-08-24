@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { MainContext } from '~/src/frontend/js/context/MainContext'
 
 const Statistics = () => {
+  const { state } = useContext(MainContext)
+  const { transactions } = state
+
+  let collectIncome = 0
+  let collectSpending = 0
+  for (const key in transactions) {
+    const transaction = transactions[key]
+    if (transaction.type === 1) {
+      collectIncome += transaction.price
+    } else {
+      collectSpending += transaction.price
+    }
+  }
+  const income = collectIncome.toFixed(2)
+  const spending = collectSpending.toFixed(2)
+  const balance = (income - spending).toFixed(2)
+
   return (
     <main id='statistics'>
       <div className='statistic'>
@@ -8,7 +27,7 @@ const Statistics = () => {
           Balance
         </div>
         <div className='statisticPrice'>
-          350,00 TL
+          {balance} TL
         </div>
       </div>
 
@@ -17,7 +36,7 @@ const Statistics = () => {
           Income
         </div>
         <div className='statisticPrice'>
-          550,00 TL
+          {income} TL
         </div>
       </div>
 
@@ -26,7 +45,7 @@ const Statistics = () => {
           Spending
         </div>
         <div className='statisticPrice'>
-          200,00 TL
+          {spending} TL
         </div>
       </div>
     </main>
