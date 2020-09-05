@@ -6,6 +6,7 @@ const MainProvider = props => {
   const [state, setState] = useState({
     selectedPage: 'transactions',
     selectedType: 'expense',
+    selectedTransactionId: '',
     transactions: window.defaults.transactions || {}
   })
 

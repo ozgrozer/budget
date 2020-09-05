@@ -8,6 +8,7 @@ const Header = () => {
   const pages = {
     transactions: 'Transactions',
     create: 'Create',
+    update: 'Update',
     statistics: 'Statistics'
   }
   const pageTitle = pages[selectedPage]

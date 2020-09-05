@@ -10,23 +10,29 @@ const Footer = () => {
     setState({ selectedPage })
   }
 
+  const activeButtons = {
+    transactions: selectedPage === 'transactions' || selectedPage === 'update' ? ' active' : '',
+    create: selectedPage === 'create' ? ' active' : '',
+    statistics: selectedPage === 'statistics' ? ' active' : ''
+  }
+
   return (
     <footer>
       <div
         onClick={() => changePage('transactions')}
-        className={'footerButton' + (selectedPage === 'transactions' ? ' active' : '')}
+        className={`footerButton${activeButtons.transactions}`}
       >
         <i className='icon icon-format_list_bulleted' />
       </div>
       <div
         onClick={() => changePage('create')}
-        className={'footerButton' + (selectedPage === 'create' ? ' active' : '')}
+        className={`footerButton${activeButtons.create}`}
       >
         <i className='icon icon-add_circle' />
       </div>
       <div
         onClick={() => changePage('statistics')}
-        className={'footerButton' + (selectedPage === 'statistics' ? ' active' : '')}
+        className={`footerButton${activeButtons.statistics}`}
       >
         <i className='icon icon-bar_chart' />
       </div>

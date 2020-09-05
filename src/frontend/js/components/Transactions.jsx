@@ -34,8 +34,12 @@ const Transactions = () => {
   const { state, setState } = useContext(MainContext)
   const dailyTransactions = dailyTransactions_(state.transactions)
 
-  const editTransaction = () => {
-    setState({ selectedPage: 'create' })
+  const editTransaction = props => {
+    const { transactionId } = props
+    setState({
+      selectedPage: 'update',
+      selectedTransactionId: transactionId
+    })
   }
 
   return (
@@ -46,11 +50,9 @@ const Transactions = () => {
         let balance = 0
         for (const key in transactions) {
           const transaction = transactions[key]
-          if (transaction.type === 1) {
-            balance = balance + transaction.price
-          } else {
-            balance = balance - transaction.price
-          }
+          balance = transaction.type === 1
+            ? balance + transaction.price
+            : balance - transaction.price
         }
         balance = balance.toFixed(2)
 
@@ -70,6 +72,7 @@ const Transactions = () => {
 
             <div className='transactions'>
               {transactions.map((transaction, key2) => {
+                const transactionId = transaction.id
                 const transactionPriceClassName1 = 'transactionPrice'
                 const transactionPriceClassName2 = transaction.type === 1
                   ? 'income'
@@ -83,7 +86,7 @@ const Transactions = () => {
                   <div
                     key={key2}
                     className='transaction'
-                    onClick={() => editTransaction()}
+                    onClick={() => editTransaction({ transactionId })}
                   >
                     <div className='transactionCategory'>
                       {transactionCategory}

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { Form, Input, Select } from 'rfv'
 
+import findInObject from '~/src/common/findInObject'
 import categories from '~/src/frontend/js/components/categories'
 import { MainContext } from '~/src/frontend/js/context/MainContext'
 
-const Create = () => {
+const CreateAndUpdate = () => {
   const { state, setState } = useContext(MainContext)
-  const { selectedType, transactions } = state
+  const { selectedPage, selectedTransactionId, selectedType, transactions } = state
 
   const changeType = selectedType => {
     setState({ selectedType })
@@ -25,15 +26,31 @@ const Create = () => {
     setFormIsSubmitting(false)
   }
 
-  const expenseClassName = selectedType === 'expense'
+  let transaction = {}
+  if (selectedPage === 'update') {
+    const selectedTransactionIndex = findInObject({
+      object: transactions,
+      search: { id: selectedTransactionId }
+    })
+    transaction = transactions[selectedTransactionIndex]
+  }
+
+  const _selectedType = selectedPage === 'create'
+    ? selectedType
+    : transaction.type === 1 ? 'income' : 'expense'
+  const expenseClassName = _selectedType === 'expense'
     ? 'button gray6'
     : 'button gray5'
-  const incomeClassName = selectedType === 'income'
+  const incomeClassName = _selectedType === 'income'
     ? 'button gray6'
     : 'button gray5'
 
+  const submitButtonClassName = selectedPage === 'create'
+    ? 'button blue block'
+    : 'button green block'
+
   return (
-    <main id='create'>
+    <main id='createAndUpdate'>
       <Form
         onSubmit={onSubmit}
         postSubmit={postSubmit}
@@ -72,11 +89,16 @@ const Create = () => {
               type='number'
               className='input'
               placeholder='Price'
+              value={transaction.price}
             />
           </div>
 
           <div className='formGroup'>
-            <Select className='select' name='category'>
+            <Select
+              name='category'
+              className='select'
+              value={transaction.category}
+            >
               <option value=''>Category</option>
               {Object.keys(categories).map((categoryKey, key) => {
                 const category = categories[categoryKey]
@@ -90,13 +112,12 @@ const Create = () => {
                   </option>
                 )
               })}
-              <option value='2'>Restaurant</option>
             </Select>
           </div>
 
           <div className='formGroup'>
-            <button className='button blue block createButton'>
-              Create
+            <button className={submitButtonClassName}>
+              {selectedPage === 'create' ? 'Create' : 'Update'}
             </button>
           </div>
         </fieldset>
@@ -105,4 +126,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default CreateAndUpdate
