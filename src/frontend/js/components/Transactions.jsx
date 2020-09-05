@@ -42,7 +42,17 @@ const Transactions = () => {
     <main id='transactions'>
       {Object.keys(dailyTransactions).map((day, key1) => {
         const transactions = dailyTransactions[day]
-        const balance = '?'
+
+        let balance = 0
+        for (const key in transactions) {
+          const transaction = transactions[key]
+          if (transaction.type === 1) {
+            balance = balance + transaction.price
+          } else {
+            balance = balance - transaction.price
+          }
+        }
+        balance = balance.toFixed(2)
 
         return (
           <div
