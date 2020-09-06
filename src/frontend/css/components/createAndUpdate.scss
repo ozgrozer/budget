@@ -1,6 +1,9 @@
 #createAndUpdate {
   .formGroup {
     margin-top: $padding1;
+    &.tar {
+      text-align: right;
+    }
     &:first-child {
       margin-top: 0;
     }

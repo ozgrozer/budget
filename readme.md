@@ -21,7 +21,7 @@ A simple budgeting app for mobile devices
 - [x] Create transactions
 - [x] Read transactions
 - [x] Update transactions
-- [ ] Delete transactions
+- [x] Delete transactions
 - [ ] Create categories
 - [ ] Read categories
 - [ ] Update categories

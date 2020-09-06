@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Form, Input, Select } from 'rfv'
+import axios from 'axios'
 
 import findInObject from '~/src/common/findInObject'
 import categories from '~/src/frontend/js/components/categories'
@@ -36,6 +37,29 @@ const CreateAndUpdate = () => {
 
     setState({ transactions })
     setFormIsSubmitting(false)
+  }
+  const deleteTransaction = transactionId => {
+    setFormIsSubmitting(true)
+
+    axios({
+      method: 'post',
+      data: { transactionId },
+      url: '/delete-transaction'
+    })
+      .then(res => {
+        setFormIsSubmitting(false)
+
+        if (res.data.success) {
+          const deletedTransaction = res.data.data
+          const deletedTransactionIndex = findInObject({
+            object: transactions,
+            search: { id: deletedTransaction.id }
+          })
+          delete transactions[deletedTransactionIndex]
+
+          setState({ selectedPage: 'transactions' })
+        }
+      })
   }
 
   let transaction = {}
@@ -146,6 +170,17 @@ const CreateAndUpdate = () => {
           value={transaction.id}
         />
       </Form>
+
+      {selectedPage === 'update' ? (
+        <div className='formGroup tar'>
+          <button
+            className='button red'
+            onClick={() => deleteTransaction(transaction.id)}
+          >
+            Delete
+          </button>
+        </div>
+      ) : null}
     </main>
   )
 }
