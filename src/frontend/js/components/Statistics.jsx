@@ -10,7 +10,7 @@ const Statistics = () => {
   let collectSpending = 0
   for (const key in transactions) {
     const transaction = transactions[key]
-    if (transaction.type === 1) {
+    if (transaction.type === 'income') {
       collectIncome += transaction.price
     } else {
       collectSpending += transaction.price
