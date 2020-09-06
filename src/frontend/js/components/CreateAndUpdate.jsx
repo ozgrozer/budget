@@ -20,8 +20,20 @@ const CreateAndUpdate = () => {
     }
   }
   const postSubmit = res => {
-    const countTransactions = Object.keys(transactions).length
-    transactions[countTransactions] = res.data.data
+    if (selectedPage === 'update') {
+      const updatedTransaction = res.data.data
+      const updatedTransactionIndex = findInObject({
+        object: transactions,
+        search: { id: updatedTransaction.id }
+      })
+      transactions[updatedTransactionIndex].type = updatedTransaction.type
+      transactions[updatedTransactionIndex].category = updatedTransaction.category
+      transactions[updatedTransactionIndex].price = updatedTransaction.price
+    } else {
+      const countTransactions = Object.keys(transactions).length
+      transactions[countTransactions] = res.data.data
+    }
+
     setState({ transactions })
     setFormIsSubmitting(false)
   }
