@@ -3,11 +3,6 @@ import React, { useContext } from 'react'
 import categories from '~/src/frontend/js/components/categories'
 import { MainContext } from '~/src/frontend/js/context/MainContext'
 
-/* const types = {
-  1: 'Income',
-  2: 'Expense'
-} */
-
 const dailyTransactions_ = transactions => {
   const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -50,7 +45,7 @@ const Transactions = () => {
         let balance = 0
         for (const key in transactions) {
           const transaction = transactions[key]
-          balance = transaction.type === 1
+          balance = transaction.type === 'income'
             ? balance + transaction.price
             : balance - transaction.price
         }
@@ -74,12 +69,10 @@ const Transactions = () => {
               {transactions.map((transaction, key2) => {
                 const transactionId = transaction.id
                 const transactionPriceClassName1 = 'transactionPrice'
-                const transactionPriceClassName2 = transaction.type === 1
-                  ? 'income'
-                  : 'expense'
+                const transactionPriceClassName2 = transaction.type
                 const transactionPriceClassName = `${transactionPriceClassName1} ${transactionPriceClassName2}`
                 const transactionCategory = categories[transaction.category]
-                const transactionPrice1 = transaction.type === 2 ? '-' : ''
+                const transactionPrice1 = transaction.type === 'expense' ? '-' : ''
                 const transactionPrice = `${transactionPrice1}${transaction.price}`
 
                 return (

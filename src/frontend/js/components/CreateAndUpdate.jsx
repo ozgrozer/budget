@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Form, Input, Select } from 'rfv'
 
 import findInObject from '~/src/common/findInObject'
@@ -35,26 +35,32 @@ const CreateAndUpdate = () => {
     transaction = transactions[selectedTransactionIndex]
   }
 
-  const _selectedType = selectedPage === 'create'
-    ? selectedType
-    : transaction.type === 1 ? 'income' : 'expense'
-  const expenseClassName = _selectedType === 'expense'
-    ? 'button gray6'
-    : 'button gray5'
-  const incomeClassName = _selectedType === 'income'
-    ? 'button gray6'
-    : 'button gray5'
+  useEffect(() => {
+    if (selectedPage === 'update') {
+      setState({ selectedType: transaction.type })
+    }
+  }, [])
 
+  const expenseClassName = selectedType === 'expense'
+    ? 'button gray6'
+    : 'button gray5'
+  const incomeClassName = selectedType === 'income'
+    ? 'button gray6'
+    : 'button gray5'
   const submitButtonClassName = selectedPage === 'create'
     ? 'button blue block'
     : 'button green block'
+
+  const postUrl = selectedPage === 'create'
+    ? '/create-transaction'
+    : '/update-transaction'
 
   return (
     <main id='createAndUpdate'>
       <Form
         onSubmit={onSubmit}
         postSubmit={postSubmit}
-        postOptions={{ method: 'post', url: '/create-transaction' }}
+        postOptions={{ method: 'post', url: postUrl }}
       >
         <fieldset disabled={formIsSubmitting}>
           <div className='formGroup'>
@@ -78,8 +84,8 @@ const CreateAndUpdate = () => {
 
             <Input
               name='type'
-              type='hidden'
-              value={selectedType === 'expense' ? '2' : '1'}
+              type='hiddens'
+              value={selectedType}
             />
           </div>
 
@@ -121,6 +127,12 @@ const CreateAndUpdate = () => {
             </button>
           </div>
         </fieldset>
+
+        <Input
+          type='hidden'
+          name='transactionId'
+          value={transaction.id}
+        />
       </Form>
     </main>
   )

@@ -1,6 +1,6 @@
 const schemas = {
   transactions: {
-    type: { type: Number, required: true },
+    type: { type: String, required: true },
     category: { type: Number, required: true },
     price: { type: Number, required: true }
   }
