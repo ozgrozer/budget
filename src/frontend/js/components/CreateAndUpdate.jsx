@@ -33,6 +33,8 @@ const CreateAndUpdate = () => {
     } else {
       const countTransactions = Object.keys(transactions).length
       transactions[countTransactions] = res.data.data
+
+      res.setItems({ price: '' })
     }
 
     setState({ transactions })
