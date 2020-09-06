@@ -84,7 +84,7 @@ const CreateAndUpdate = () => {
 
             <Input
               name='type'
-              type='hiddens'
+              type='hidden'
               value={selectedType}
             />
           </div>
